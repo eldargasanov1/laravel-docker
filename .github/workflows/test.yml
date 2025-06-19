@@ -39,10 +39,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer install
-          npm install
+          docker exec -it laravel-docker-app-1 composer install
+          docker exec -it laravel-docker-app-1 npm install
         continue-on-error: false
 
       - name: Run tests
-        run: php artisan test
+        run: docker exec -it laravel-docker-app-1 php artisan test
         continue-on-error: false
