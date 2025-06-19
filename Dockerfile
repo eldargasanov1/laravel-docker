@@ -1,14 +1,5 @@
 FROM php:8.4-fpm-alpine
 
-ARG USERNAME=nonroot-user
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
-
-RUN addgroup -g $USER_GID $USERNAME && \
-    adduser -u $USER_UID -G $USERNAME
-
-USER $USERNAME
-
 WORKDIR /var/www/laravel
 
 RUN docker-php-ext-install pdo pdo_mysql
