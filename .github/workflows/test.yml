@@ -33,18 +33,18 @@ jobs:
             docker-compose --version
         continue-on-error: false
 
-      - name: Start application-specific services using Docker Compose
-        run: docker-compose up -d
-        continue-on-error: false
-
       - name: Install dependencies
         run: |
-          docker exec laravel-docker-app-1 composer install
-          docker exec laravel-docker-app-1 npm install
+          composer install
+          npm install
         continue-on-error: false
 
       - name: Copy .env
-        run: docker exec laravel-docker-app-1 cp .env.example .env
+        run: cp .env.example .env
+        continue-on-error: false
+
+      - name: Start application-specific services using Docker Compose
+        run: docker-compose up -d
         continue-on-error: false
 
       - name: Prepare app
