@@ -35,8 +35,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer install
-          npm install
+          sudo composer install
+          sudo npm install
         continue-on-error: false
 
       - name: Copy .env
