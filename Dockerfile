@@ -4,8 +4,8 @@ ARG USERNAME=nonroot-user
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
-RUN groupadd --gid $USER_GID $USERNAME && \
-    useradd --uid $USER_UID --gid $USER_GID $USERNAME
+RUN addgroup -g $USER_GID $USERNAME && \
+    adduser -u $USER_UID -G $USERNAME
 
 USER $USERNAME
 
